@@ -1,0 +1,10 @@
+.footer {
+  max-width: 880px;
+  margin: 0 auto;
+}
+
+.footer__copyright {
+  margin: 67px 0 60px;
+  font-family: inter;
+  font-weight: 800;
+}

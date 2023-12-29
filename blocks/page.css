@@ -1,0 +1,18 @@
+.page {
+  background-color: black;
+  color: white;
+  /* display: flex; */
+  justify-content: center;
+}
+
+.page__section {
+  max-width: 880px;
+  width: 100%;
+  position: relative;
+  margin: 0 auto;
+}
+
+.page__content {
+  min-height: 100vh;
+  padding: 0 20px;
+}
