@@ -1,8 +1,6 @@
 .page {
   background-color: black;
   color: white;
-  /* display: flex; */
-  justify-content: center;
 }
 
 .page__section {
