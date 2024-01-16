@@ -25,6 +25,11 @@
   border-radius: 10px 10px 0 0;
 }
 
+.card__title {
+  font-family: "Inter";
+  font-weight: 900;
+}
+
 .card__description {
   background-color: white;
   padding-top: 6px;

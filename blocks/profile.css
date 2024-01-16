@@ -43,7 +43,7 @@
 }
 
 .profile__add-button {
-  background: transparent url(../images/Add\ Button.svg) center no-repeat;
+  background: transparent url(../images/Vector.png) center no-repeat;
   width: 150px;
   height: 50px;
   margin-left: auto;
@@ -51,9 +51,8 @@
   border-color: white;
 }
 
-@media screen and (max-width: 480px) {
+@media screen and (max-width: 620px) {
   .profile {
-    background-color: pink;
     flex-direction: column;
   }
 
@@ -76,6 +75,18 @@
 
   .profile__add-button {
     margin: 0;
-    width: 100%;
+    width: 50%;
+  }
+}
+
+@media screen and (max-width: 770px) {
+  .profile__add-button {
+  }
+  .profile__title {
+    font-size: 21px;
+  }
+
+  .profile__description {
+    font-size: 19px;
   }
 }
