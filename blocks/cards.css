@@ -28,6 +28,7 @@
 .card__title {
   font-family: "Inter";
   font-weight: 900;
+  font-size: 22px;
 }
 
 .card__description {
