@@ -5,7 +5,16 @@
 
 .footer__copyright {
   margin: 67px 0 60px;
-  font-family: Inter;
+  font-family: "Inter", Arial, Helvetica, sans-serif;
+  font-size: 18px;
   font-weight: 400;
   color: #545454;
+  line-height: 1.2;
+}
+
+@media screen and (max-width: 620px) {
+  .footer__copyright {
+    font-size: 14px;
+    line-height: 1.2;
+  }
 }
