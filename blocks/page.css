@@ -12,11 +12,11 @@
 
 .page__content {
   min-height: 100vh;
-  padding: 0 20px;
+  padding: 0 19px;
 }
 
-/* @media screen and (max-width: 620px) {
+@media screen and (max-width: 620px) {
   .page__content {
     padding: 0;
   }
-} */
+}
