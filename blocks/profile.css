@@ -21,10 +21,7 @@
   font-size: 42px;
   line-height: 1.2;
   grid-area: title;
-  margin-right: 18px;
-  margin-top: 0;
-  margin-bottom: 7px;
-  margin-bottom: 7px;
+  margin: 0px 18px 7px 0px;
   text-overflow: ellipsis;
   white-space: nowrap;
   overflow: hidden;
