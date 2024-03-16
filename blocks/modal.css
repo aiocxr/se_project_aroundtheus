@@ -6,6 +6,10 @@
   right: 0;
   background-color: rgba(0, 0, 0, 0.5);
   z-index: 999;
+  display: none;
+}
+
+.modal__opened {
   display: flex;
 }
 
@@ -32,6 +36,11 @@
   background-size: contain;
   top: -45px;
   right: -45px;
+}
+
+.modal__close:hover {
+  opacity: 60%;
+  transition: opacity;
 }
 
 .modal__heading {
