@@ -33,7 +33,11 @@
             ></button>
             <p class="profile__description">Explorer</p>
           </div>
-          <button type="button" class="profile__add-button"></button>
+          <button
+            type="button"
+            class="profile__add-button"
+            id="profile-edit-button"
+          ></button>
         </section>
 
         <section class="cards page__section">
@@ -128,15 +132,17 @@
         <form class="modal__form">
           <input
             class="modal__input"
+            id="profile-title-input"
             placeholder="Jacques Costeau"
             type="text"
             name="title"
           />
           <input
             class="modal__input"
+            id="profile-description-input"
             placeholder="Explorer"
             type="text"
-            name="title"
+            name="description"
           />
           <button class="modal__button">Save</button>
         </form>
