@@ -36,15 +36,33 @@ const profileTitleInput = document.querySelector("#profile-title-input");
 const profileDescriptionInput = document.querySelector(
   "#profile-description-input"
 );
+const profileEditForm = profileEditModal.querySelector(".modal__form");
+
+// FUNCTIONS
+
+function closePopop() {
+  profileEditModal.classList.remove("modal__opened");
+}
+
+// EVENTHANDLERS
+
+function handleProfileEditSubmit(e) {
+  e.preventDefault();
+  profileTitle.textContent = profileTitleInput.value;
+  profileDescription.textContent = profileDescriptionInput.value;
+  closePopop();
+}
+
+// EVENT LISTENERS
 
 profileEditButton.addEventListener("click", () => {
   profileTitleInput.value = profileTitle.textContent;
-
+  profileDescriptionInput.value = profileDescription.textContent;
   profileEditModal.classList.add("modal__opened");
 });
 
 closeModalButton.addEventListener("click", () => {
-  profileDescriptionInput.value = profileDescription.textContent;
-
-  profileEditModal.classList.remove("modal__opened");
+  closePopop();
 });
+
+profileEditForm.addEventListener("submit", handleProfileEditSubmit);
