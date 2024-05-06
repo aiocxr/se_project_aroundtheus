@@ -27,7 +27,7 @@ const initialCards = [
 
 console.log(initialCards);
 
-// ELEMENTS
+// PROFILE ELEMENTS
 
 const profileEditButton = document.querySelector("#profile-edit-button");
 const profileEditModal = document.querySelector("#profile-edit-modal");
@@ -41,11 +41,14 @@ const profileDescriptionInput = document.querySelector(
   "#profile-description-input"
 );
 const profileEditForm = profileEditModal.querySelector(".modal__form");
-const addCardForm = document.querySelector("#add-card-form");
+
+// ADD BUTTON ELEMENTS
 
 const addCardModal = document.querySelector("#add-card-modal");
+const addCardForm = document.querySelector("#add-card-form");
 const addNewCardButton = document.querySelector(".profile__add-button");
 const closeAddModalButton = addCardModal.querySelector("#modal-add-button");
+const cardlikebutton = document.querySelectorAll("cards__like-button");
 
 // CARD ELEMENTS
 
@@ -60,7 +63,6 @@ function getCardElement(cardData) {
   const cardImageEl = cardElement.querySelector(".cards__image");
   const cardTitleEl = cardElement.querySelector(".cards__title");
   cardImageEl.src = cardData.link;
-  cardImageEl.alt = cardData.name;
   cardTitleEl.textContent = cardData.name;
 
   return cardElement;

@@ -51,6 +51,10 @@
   cursor: pointer;
 }
 
+.cards__like-button_active {
+  background-image: url(../images/heart_like-button_active.svg);
+}
+
 .cards__like-button:hover {
   opacity: 50%;
   transition: opacity;
