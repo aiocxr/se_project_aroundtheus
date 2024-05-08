@@ -11,6 +11,7 @@
   list-style-type: none;
   display: flex;
   flex-direction: column;
+  position: relative;
   border-radius: 10px;
   width: 100%;
 }
@@ -42,6 +43,19 @@
   align-items: center;
   border-radius: 0 0 10px 10px;
 }
+
+.cards__trash-button {
+  width: 18px;
+  height: 19px;
+  position: absolute;
+  background: transparent url(../images/card-images/Trash.svg) center no-repeat;
+  border: none;
+  cursor: pointer;
+  right: 19px;
+  top: 18px;
+}
+
+/* make sure to fix this ! */
 
 .cards__like-button {
   width: 21px;
