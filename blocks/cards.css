@@ -66,7 +66,7 @@
 }
 
 .cards__like-button_active {
-  background-image: url(../images/heart_like-button_active.svg);
+  background: url(../images/heart_like-button_active.svg);
 }
 
 .cards__like-button:hover {
