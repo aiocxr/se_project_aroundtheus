@@ -60,7 +60,7 @@ const profileDescriptionInput = document.querySelector(
   "#profile-description-input"
 );
 
-// CARD FUNCTION
+// Card Element Function to create card element from card data object and return card element to render card
 
 function getCardElement(cardData) {
   const cardElement = cardTemplate.cloneNode(true);
@@ -72,7 +72,7 @@ function getCardElement(cardData) {
   return cardElement;
 }
 
-// Key Functions
+// Key Functions for Modal
 
 function openModal(modal) {
   modal.classList.add("modal_opened");
@@ -86,7 +86,7 @@ function renderCard(cardData, wrapper) {
   const cardElement = getCardElement(cardData);
   wrapper.prepend(cardElement);
 }
-// EVENTHANDLERS
+// Event Handlers for Profile and Add Card Modal
 
 function handleProfileFormSubmit(evt) {
   evt.preventDefault();
@@ -107,13 +107,14 @@ function handleAddCardFormSubmit(evt) {
   closeModal(addCardModal);
 }
 
-// EVENT LISTENERS
+// Event Listeners for Profile and Add Card Modal
 
 profileEditButton.addEventListener("click", () => {
   profileTitleInput.value = profileTitle.textContent;
   profileDescriptionInput.value = profileDescription.textContent;
   openModal(profileEditModal);
 });
+
 addNewCardButton.addEventListener("click", () => openModal(addCardModal));
 
 closeProfileModalButton.addEventListener("click", () =>
@@ -122,16 +123,19 @@ closeProfileModalButton.addEventListener("click", () =>
 
 closeAddModalButton.addEventListener("click", () => closeModal(addCardModal));
 
-// Form Listeners
+// Form Submit Event Listeners for profile and card
+
 profileEditForm.addEventListener("submit", handleProfileFormSubmit);
 addCardForm.addEventListener("submit", handleAddCardFormSubmit);
 
-// cards func
+// Cards function to Render Cards from initial cards array
 
 initialCards.forEach((cardData) => {
   const cardElement = getCardElement(cardData);
   cardListEl.append(cardElement);
 });
+
+// Cards like button function and event listener for like button
 
 const likeButtons = document.querySelectorAll(".cards__like-button");
 

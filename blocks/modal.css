@@ -1,3 +1,45 @@
+.image__modal {
+  display: flex;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 999;
+}
+
+.image__modal__container {
+  margin: auto;
+  position: relative;
+}
+
+.open__image__modal {
+  width: 433px;
+  height: 540px;
+}
+
+.image__modal-close__button {
+  border: none;
+  background-image: url(../images/Close-Icon.svg);
+  background-color: transparent;
+  cursor: pointer;
+  position: absolute;
+  width: 40px;
+  height: 40px;
+  background-size: contain;
+  top: -41px;
+  right: -45px;
+}
+
+.image__modal-title {
+  font-family: "Inter";
+  font-size: 12px;
+  font-weight: 400;
+  width: 291px;
+  height: 12px;
+}
+
 .modal {
   position: fixed;
   top: 0;
@@ -12,10 +54,6 @@
 .modal_opened {
   display: flex;
 }
-
-/* .modal_is-opened {
-  display: flex;
-} */
 
 .modal__container {
   background-color: #ffffff;
