@@ -144,3 +144,27 @@ likeButtons.forEach((likebutton) => {
     likebutton.classList.toggle("cards__like-button_active");
   });
 });
+
+// Preview Elements
+
+const previewModal = document.querySelector("#preview-modal");
+const modalImg = previewModal.querySelector("#modal-image");
+const closePreviewModalButton = previewModal.querySelector(
+  "#preview-modal-close-button"
+);
+const images = previewModal.querySelector(".preview__image");
+
+// function to open modal and display image
+
+function openModal(src) {
+  previewModal.style.display = "block";
+  modalImg.src = src;
+}
+
+// Images Event Listener to display image in modal
+
+images.forEach((image) => {
+  image.addEventListener("click", () => {
+    openModal(image.src);
+  });
+});

@@ -107,25 +107,21 @@
       </div>
     </div>
 
-<div class="image__modal" id="image-modal">
-      <div class="image__modal__container">
+    <div class="modal modal__opened" id="preview-modal">
+      <div class="modal__container modal__container_type_preview">
         <button
-          class="image__modal-close__button"
-          id="modal-image-close-button"
+          class="modal__close"
+          id="preview-modal-close-button"
           type="button"
         ></button>
-        <img
-          class="open__image__modal"
-          src="./images/card-images/yosemite.jpg"
-          alt="Image"
-        />
-        <p class="image__modal-title">Does it work?</p>
+        <img class="preview__image" src alt="Image" />
+        <p class="modal__title">Does it work?</p>
       </div>
-
+    </div>
     <template id="card-template">
       <li class="cards">
         <button type="button" class="cards__trash-button"></button>
-        <img class="cards__image" src="" alt="" />
+        <img id="preview-modal-image" class="cards__image" src="" alt="" />
         <div class="cards__description">
           <h2 class="cards__title"></h2>
           <button type="button" class="cards__like-button"></button>
