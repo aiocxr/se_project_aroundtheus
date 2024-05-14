@@ -79,14 +79,14 @@ function getCardElement(cardData) {
   const previewModalCloseButton = previewModal.querySelector(
     "#preview-modal-close-button"
   );
-  const deleteButtons = cardTemplate.querySelectorAll(".cards__trash-button");
+  // const deleteButtons = cardTemplate.querySelectorAll(".cards__trash-button");
 
   cardImageEl.src = cardData.link;
   cardTitleEl.textContent = cardData.name;
 
-  deleteButtons.addEventListener("click", (evt) => {
-    evt.target.closest(cardListEl).remove();
-  });
+  // deleteButtons.addEventListener("click", (evt) => {
+  //   evt.target.closest(cardListEl).remove();
+  // });
 
   cardImageEl.addEventListener("click", () => {
     openModal(previewModal);
