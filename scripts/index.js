@@ -80,6 +80,13 @@ function getCardElement(cardData) {
     "#preview-modal-close-button"
   );
   const deleteButtons = document.querySelectorAll(".cards__trash-button");
+  const likeButtons = document.querySelectorAll(".cards__like-button");
+
+  likeButtons.forEach((likebutton) => {
+    likebutton.addEventListener("click", () => {
+      likebutton.classList.toggle("cards__like-button_active");
+    });
+  });
 
   deleteButtons.forEach((deleteButton) => {
     deleteButton.addEventListener("click", (evt) => {
@@ -102,10 +109,6 @@ function getCardElement(cardData) {
   });
 
   return cardElement;
-}
-
-function newFunction_1(newFunction) {
-  newFunction();
 }
 
 // Key Functions for Modal
@@ -163,11 +166,3 @@ closeAddModalButton.addEventListener("click", () => closeModal(addCardModal));
 
 profileEditForm.addEventListener("submit", handleProfileFormSubmit);
 addCardForm.addEventListener("submit", handleAddCardFormSubmit);
-
-const likeButtons = document.querySelectorAll(".cards__like-button");
-
-likeButtons.forEach((likebutton) => {
-  likebutton.addEventListener("click", () => {
-    likebutton.classList.toggle("cards__like-button_active");
-  });
-});
