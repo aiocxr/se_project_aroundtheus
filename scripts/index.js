@@ -79,7 +79,6 @@ function getCardElement(cardData) {
   const previewModalCloseButton = previewModal.querySelector(
     "#preview-modal-close-button"
   );
-
   const deleteButtons = document.querySelectorAll(".cards__trash-button");
 
   deleteButtons.forEach((deleteButton) => {
@@ -103,6 +102,10 @@ function getCardElement(cardData) {
   });
 
   return cardElement;
+}
+
+function newFunction_1(newFunction) {
+  newFunction();
 }
 
 // Key Functions for Modal
