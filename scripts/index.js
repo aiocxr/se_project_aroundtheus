@@ -79,8 +79,8 @@ function getCardElement(cardData) {
   const previewModalCloseButton = previewModal.querySelector(
     "#preview-modal-close-button"
   );
-  const deleteButtons = document.querySelectorAll(".cards__trash-button");
-  const likeButtons = document.querySelectorAll(".cards__like-button");
+  const deleteButtons = cardElement.querySelector(".cards__trash-button");
+  const likeButtons = cardElement.querySelector(".cards__like-button");
 
   likeButtons.forEach((likebutton) => {
     likebutton.addEventListener("click", (evt) => {
