@@ -79,19 +79,15 @@ function getCardElement(cardData) {
   const previewModalCloseButton = previewModal.querySelector(
     "#preview-modal-close-button"
   );
-  const deleteButtons = document.querySelectorAll(".cards__trash-button");
-  const likeButtons = document.querySelectorAll(".cards__like-button");
+  const likeButton = cardElement.querySelector(".cards__like-button");
+  const deleteButton = cardElement.querySelector(".cards__trash-button");
 
-  likeButtons.forEach((likebutton) => {
-    likebutton.addEventListener("click", () => {
-      likebutton.classList.toggle("cards__like-button_active");
-    });
+  likeButton.addEventListener("click", () => {
+    likeButton.classList.toggle("cards__like-button_active");
   });
 
-  deleteButtons.forEach((deleteButton) => {
-    deleteButton.addEventListener("click", (evt) => {
-      evt.target.closest(".cards").remove();
-    });
+  deleteButton.addEventListener("click", (evt) => {
+    evt.target.closest(".cards").remove();
   });
 
   cardImageEl.src = cardData.link;
