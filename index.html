@@ -49,16 +49,16 @@
       </footer>
     </div>
 
-    <!-- EDIT MODAL  -->
+    <!-- PROFILE EDIT MODAL  -->
 
     <div class="modal" id="profile-edit-modal">
       <div class="modal__container">
         <button
           class="modal__close"
-          id="modal-close-button"
+          id="profile-modal-close-button"
           type="button"
         ></button>
-        <p class="modal__heading">Edit Profile</p>
+        <h6 class="modal__heading">Edit Profile</h6>
         <form class="modal__form">
           <input
             class="modal__input"
@@ -74,7 +74,7 @@
             type="text"
             name="description"
           />
-          <button class="modal__button">Save</button>
+          <button class="modal__button" type="submit">Save</button>
         </form>
       </div>
     </div>
@@ -88,7 +88,7 @@
           id="modal-add-button"
           type="button"
         ></button>
-        <p class="modal__heading">New place</p>
+        <h6 class="modal__heading">New place</h6>
         <form class="modal__form" id="add-card-form">
           <input
             class="modal__input modal__input_type_title"
@@ -102,7 +102,7 @@
             name="url"
             type="text"
           />
-          <button class="modal__button">Save</button>
+          <button class="modal__button" type="submit">Save</button>
         </form>
       </div>
     </div>
@@ -133,6 +133,6 @@
       </li>
     </template>
 
-    <script src="./scripts/index.js"></script>
+    <script src="./scripts/index.js" defer></script>
   </body>
 </html>
