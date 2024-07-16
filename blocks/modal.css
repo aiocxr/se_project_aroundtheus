@@ -138,27 +138,25 @@
   background-color: rgba(0, 0, 0, 0.8);
 }
 
+.modal__button_disabled {
+  opacity: 20%;
+  background-color: white;
+  color: black;
+  border-style: solid;
+}
+
 .popup__label {
   display: flex;
   flex-direction: column;
   position: relative;
 }
 
-.popup__error {
+.modal__error {
   color: #ff0000;
   position: absolute;
-  top: 32px;
+  top: 30px;
   font-family: "Inter", Arial, Helvetica, sans-serif;
   font-size: 12px;
-}
-
-/* .popup__error_visible {
-  visibility: hidden;
-} */
-
-.popup__button_disabled {
-  opacity: 20%;
-  color: black;
 }
 
 @media screen and (max-width: 620px) {
@@ -188,6 +186,10 @@
   .modal__close_type_preview {
     top: -35px;
     right: -35px;
+  }
+
+  .modal__error {
+    font-size: 11px;
   }
 }
 
