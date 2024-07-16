@@ -89,12 +89,20 @@
   border-bottom: 1px solid rgba(0, 0, 0, 1);
   width: auto;
   height: 14px;
-  margin-bottom: 30px;
   padding: 0px 0px 13px;
   font-family: "Inter", Arial, Helvetica, sans-serif;
   font-weight: 400;
   font-size: 14px;
   line-height: 1.2;
+  margin-bottom: 30px;
+}
+
+.modal__input:invalid {
+  border-bottom: 1px solid red;
+}
+
+.modal__input:valid {
+  border-bottom: 1px solid green;
 }
 
 ::placeholder {
@@ -128,6 +136,29 @@
 
 .modal__button:hover {
   background-color: rgba(0, 0, 0, 0.8);
+}
+
+.popup__label {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+.popup__error {
+  color: #ff0000;
+  position: absolute;
+  top: 32px;
+  font-family: "Inter", Arial, Helvetica, sans-serif;
+  font-size: 12px;
+}
+
+/* .popup__error_visible {
+  visibility: hidden;
+} */
+
+.popup__button_disabled {
+  opacity: 20%;
+  color: black;
 }
 
 @media screen and (max-width: 620px) {
