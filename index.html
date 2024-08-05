@@ -85,11 +85,17 @@
               maxlength="200"
             />
             <span
-              class="modal__error_visible"
+              class="modal__error"
               id="profile-description-input-error"
             ></span>
           </label>
-          <button class="modal__button" type="submit">Save</button>
+          <button
+            class="modal__button modal__button_disabled"
+            type="submit"
+            disabled
+          >
+            Save
+          </button>
         </form>
       </div>
     </div>
@@ -103,11 +109,13 @@
           id="modal-add-button"
           type="button"
         ></button>
+        <!-- fix ID name^ -->
         <h6 class="modal__heading">New place</h6>
         <form class="modal__form" id="add-card-form" novalidate>
           <label class="popup__label">
             <input
               class="modal__input modal__input_type_title"
+              id="addcard-title-input"
               placeholder="Title"
               name="title"
               type="text"
@@ -115,15 +123,27 @@
               maxlength="30"
               required
             />
+            <span class="modal__error" id="addcard-title-input-error"></span>
           </label>
-          <input
-            class="modal__input modal__input_type_url"
-            placeholder="Image url"
-            name="url"
-            type="url"
-            required
-          />
-          <button class="modal__button" type="submit">Save</button>
+          <label class="popup__label">
+            <input
+              class="modal__input modal__input_type_url"
+              id="addcard-url-input"
+              placeholder="Image url"
+              name="url"
+              type="url"
+              required
+            />
+            <span class="modal__error" id="addcard-url-input-error"></span>
+          </label>
+
+          <button
+            class="modal__button modal__button_disabled"
+            type="submit"
+            disabled
+          >
+            Save
+          </button>
         </form>
       </div>
     </div>

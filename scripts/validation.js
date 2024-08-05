@@ -12,23 +12,6 @@ function hideInputError(formEl, inputEl, { inputErrorClass, errorClass }) {
   errorMessageEl.classList.remove(errorClass);
 }
 
-const checkInputValidity = (formEl, inputEl, options) => {
-  if (!inputEl.validity.valid) {
-    return showInputError(formEl, inputEl, options);
-  }
-  hideInputError(formEl, inputEl, options);
-};
-
-// function enableValidation(options) {
-//   const formEls = [...document.querySelectorAll(options.formSelector)];
-//   formEls.forEach((formEl) => {
-//     formEl.addEventListener("submit", (e) => {
-//       e.preventDefault();
-//     });
-//     setEventListeners(formEl, options);
-//   });
-// }
-
 function enableValidation(options) {
   const { formSelector } = options;
   const formEls = [...document.querySelectorAll(formSelector)];
@@ -67,6 +50,13 @@ function setEventListeners(formEl, options) {
     // fix (e) event listener to (inputEl) to avoid confusion
   });
 }
+
+const checkInputValidity = (formEl, inputEl, options) => {
+  if (!inputEl.validity.valid) {
+    return showInputError(formEl, inputEl, options);
+  }
+  hideInputError(formEl, inputEl, options);
+};
 
 const config = {
   formSelector: ".modal__form",
