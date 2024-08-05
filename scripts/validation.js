@@ -19,18 +19,25 @@ const checkInputValidity = (formEl, inputEl, options) => {
   hideInputError(formEl, inputEl, options);
 };
 
+// function enableValidation(options) {
+//   const formEls = [...document.querySelectorAll(options.formSelector)];
+//   formEls.forEach((formEl) => {
+//     formEl.addEventListener("submit", (e) => {
+//       e.preventDefault();
+//     });
+//     setEventListeners(formEl, options);
+//   });
+// }
+
 function enableValidation(options) {
-  const formEls = [...document.querySelectorAll(options.formSelector)];
+  const { formSelector } = options;
+  const formEls = [...document.querySelectorAll(formSelector)];
   formEls.forEach((formEl) => {
     formEl.addEventListener("submit", (e) => {
       e.preventDefault();
     });
     setEventListeners(formEl, options);
   });
-}
-
-function hasInvalidInput(inputList) {
-  return !inputList.every((inputEl) => inputEl.validity.valid);
 }
 
 function toggleButtonState(inputEls, submitButton, { inactiveButtonClass }) {
@@ -44,6 +51,10 @@ function toggleButtonState(inputEls, submitButton, { inactiveButtonClass }) {
   submitButton.disabled = false;
 }
 
+function hasInvalidInput(inputList) {
+  return !inputList.every((inputEl) => inputEl.validity.valid);
+}
+
 function setEventListeners(formEl, options) {
   const { inputSelector } = options;
   const inputEls = [...formEl.querySelectorAll(inputSelector)];
@@ -53,6 +64,7 @@ function setEventListeners(formEl, options) {
       checkInputValidity(formEl, inputEl, options);
       toggleButtonState(inputEls, submitButton, options);
     });
+    // fix (e) event listener to (inputEl) to avoid confusion
   });
 }
 
@@ -61,8 +73,8 @@ const config = {
   inputSelector: ".modal__input",
   submitButtonSelector: ".modal__button",
   inactiveButtonClass: "modal__button_disabled",
-  inputErrorClass: "popup__input_type_error",
-  errorClass: "popup__error_visible",
+  inputErrorClass: "modal__input_type_error",
+  errorClass: "modal__error_visible",
 };
 
 enableValidation(config);
