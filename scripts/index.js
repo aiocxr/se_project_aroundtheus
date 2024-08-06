@@ -25,8 +25,6 @@ const initialCards = [
   },
 ];
 
-console.log(initialCards);
-
 // PROFILE ELEMENTS
 
 const profileEditButton = document.querySelector("#profile-edit-button");
@@ -170,3 +168,23 @@ previewModalCloseButton.addEventListener("click", () => {
 
 profileEditForm.addEventListener("submit", handleProfileFormSubmit);
 addCardForm.addEventListener("submit", handleAddCardFormSubmit);
+
+function closeModal() {
+  const modal = document.querySelector(".modal_opened");
+  if (modal) {
+    modal.classList.remove("modal_opened");
+  }
+}
+
+document.addEventListener("keydown", function (evt) {
+  if (evt.key === "Escape") {
+    closeModal();
+  }
+});
+
+document.addEventListener("click", function (evt) {
+  const modal = document.querySelector(".modal_opened");
+  if (modal && evt.target === modal) {
+    closeModal();
+  }
+});
