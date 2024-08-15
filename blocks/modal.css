@@ -30,6 +30,24 @@
   padding: 0px 36px;
 }
 
+.modal__button {
+  width: auto;
+  height: 50px;
+  font-family: "Inter", Arial, Helvetica, sans-serif;
+  font-weight: 400;
+  font-size: 18px;
+  background-color: rgba(0, 0, 0, 1);
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  border-radius: 2px;
+  border: 1px;
+}
+
+.modal__button:hover {
+  background-color: rgba(0, 0, 0, 0.8);
+}
+
 .modal__container_type_preview {
   position: relative;
   width: auto;
@@ -138,5 +156,11 @@
   .modal__close_type_preview {
     top: -32px;
     right: -30px;
+  }
+
+  .modal__button {
+    font-size: 14px;
+    width: 238px;
+    height: 46px;
   }
 }

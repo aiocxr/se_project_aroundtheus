@@ -34,8 +34,7 @@ const closeProfileModalButton = profileEditModal.querySelector(
 );
 const profileTitle = document.querySelector(".profile__title");
 const profileDescription = document.querySelector(".profile__description");
-
-const profileEditForm = profileEditModal.querySelector(".modal__form");
+const profileEditForm = document.forms["profile-edit-form"];
 
 // ADD BUTTON ELEMENTS
 
@@ -136,10 +135,11 @@ function handleAddCardFormSubmit(evt) {
   evt.preventDefault();
   const name = cardTitleInput.value;
   const link = cardUrlInput.value;
-  const cardElement = getCardElement({
-    name,
-    link,
-  });
+  // const cardElement = getCardElement({
+  //   name,
+  //   link,
+  // });
+  renderCard({ name, link }, cardListEl);
   cardListEl.prepend(cardElement);
   closeModal(addCardModal);
 }
@@ -169,11 +169,55 @@ previewModalCloseButton.addEventListener("click", () => {
 profileEditForm.addEventListener("submit", handleProfileFormSubmit);
 addCardForm.addEventListener("submit", handleAddCardFormSubmit);
 
-function closeModal() {
+// function closeModal() {
+//   const modal = document.querySelector(".modal_opened");
+//   if (modal) {
+//     modal.classList.remove("modal_opened");
+//   }
+// }
+
+function closeActiveModals() {
   const modal = document.querySelector(".modal_opened");
+  const previewModal = document.querySelector("#preview-modal");
   if (modal) {
-    modal.classList.remove("modal_opened");
+    closeModal(modal);
   }
+  if (previewModal) {
+    closeModal(previewModal);
+  }
+}
+
+function handleKeydown(evt) {
+  if (evt.key === "Escape") {
+    const modal = document.querySelector(".modal_opened");
+    const previewModal = document.querySelector("#preview-modal");
+    if (modal) {
+      closeModal(modal);
+    }
+    if (previewModal) {
+      closeModal(previewModal);
+    }
+  }
+}
+
+function handleClick(evt) {
+  const modal = document.querySelector(".modal_opened");
+  const previewModal = document.querySelector("#preview-modal");
+  if (
+    (modal && evt.target === modal) ||
+    (previewModal && evt.target === previewModal)
+  ) {
+    closeActiveModals();
+    removeEventListeners();
+  }
+}
+
+document.addEventListener("keydown", handleKeydown);
+document.addEventListener("click", handleClick);
+
+function removeEventListeners() {
+  document.removeEventListener("keydown", handleKeydown);
+  document.removeEventListener("click", handleClick);
 }
 
 document.addEventListener("keydown", function (evt) {

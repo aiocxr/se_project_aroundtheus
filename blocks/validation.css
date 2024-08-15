@@ -35,7 +35,7 @@
   font-size: 14px;
 }
 
-.modal__button {
+/* .modal__button {
   width: auto;
   height: 50px;
   font-family: "Inter", Arial, Helvetica, sans-serif;
@@ -51,7 +51,7 @@
 
 .modal__button:hover {
   background-color: rgba(0, 0, 0, 0.8);
-}
+} */
 
 .modal__button_disabled {
   opacity: 20%;
