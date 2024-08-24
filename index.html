@@ -59,7 +59,7 @@
           type="button"
         ></button>
         <h6 class="modal__heading">Edit Profile</h6>
-        <form id="profile-edit-form" class="modal__form" novalidate>
+        <form name="profile-edit-form" class="modal__form" novalidate>
           <label class="popup__label">
             <input
               class="modal__input"
@@ -73,6 +73,7 @@
             />
             <span class="modal__error" id="profile-title-input-error"></span>
           </label>
+
           <label class="popup__label">
             <input
               class="modal__input"
@@ -89,6 +90,7 @@
               id="profile-description-input-error"
             ></span>
           </label>
+
           <button
             class="modal__button modal__button_disabled"
             type="submit"
@@ -111,7 +113,7 @@
         ></button>
         <!-- fix ID name^ -->
         <h6 class="modal__heading">New place</h6>
-        <form class="modal__form" id="add-card-form" novalidate>
+        <form class="modal__form" name="add-card-form" novalidate>
           <label class="popup__label">
             <input
               class="modal__input modal__input_type_title"

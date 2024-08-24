@@ -19,6 +19,10 @@
   border-bottom: 1px solid green;
 }
 
+.modal__input_type_error:disabled {
+  border-bottom: 1px solid grey;
+}
+
 ::placeholder {
   color: #000;
 }
@@ -64,16 +68,11 @@
   background-color: white;
 }
 
+.popup__block {
+}
+
 .popup__label {
   display: flex;
   flex-direction: column;
   position: relative;
-}
-
-.modal__error {
-  color: #ff0000;
-  position: absolute;
-  top: 30px;
-  font-family: "Inter", Arial, Helvetica, sans-serif;
-  font-size: 12px;
 }

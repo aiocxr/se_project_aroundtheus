@@ -39,11 +39,11 @@ const profileEditForm = document.forms["profile-edit-form"];
 // ADD BUTTON ELEMENTS
 
 const addCardModal = document.querySelector("#add-card-modal");
-const addCardForm = document.querySelector("#add-card-form");
+// const addCardForm = document.querySelector("#add-card-form");
+const addCardForm = document.forms["add-card-form"];
 const addNewCardButton = document.querySelector(".profile__add-button");
 const closeAddModalButton = addCardModal.querySelector("#modal-add-button");
-
-// PREVIEW MODAL ELEMENTS
+// =
 const previewModal = document.querySelector("#preview-modal");
 const previewModalCloseButton = previewModal.querySelector(
   "#preview-modal-close-button"
@@ -135,13 +135,11 @@ function handleAddCardFormSubmit(evt) {
   evt.preventDefault();
   const name = cardTitleInput.value;
   const link = cardUrlInput.value;
-  // const cardElement = getCardElement({
-  //   name,
-  //   link,
-  // });
   renderCard({ name, link }, cardListEl);
-  cardListEl.prepend(cardElement);
   closeModal(addCardModal);
+  addCardForm.reset();
+  cardTitleInput.value = "";
+  cardUrlInput.value = "";
 }
 
 // Event Listeners for Profile & Add Card Modal & Preview Modal

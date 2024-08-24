@@ -42,6 +42,7 @@
   cursor: pointer;
   border-radius: 2px;
   border: 1px;
+  padding: 0px 6px 0px;
 }
 
 .modal__button:hover {
@@ -103,6 +104,14 @@
   margin: 34px 36px 54px 0px;
 }
 
+.modal__error_visible {
+  color: #ff0000;
+  position: absolute;
+  top: 30px;
+  font-family: "Inter", Arial, Helvetica, sans-serif;
+  font-size: 12px;
+}
+
 @media screen and (max-width: 620px) {
   .modal__container {
     padding: 25px 22px;
@@ -110,7 +119,7 @@
     height: 322px;
   }
   .modal__heading {
-    margin: 0px 0px 75px;
+    margin: 0px 0px 76px;
     width: 282px;
     height: 22px;
     font-size: 18px;
@@ -132,7 +141,7 @@
     right: -35px;
   }
 
-  .modal__error {
+  .modal__error_visible {
     font-size: 11px;
   }
 }
@@ -145,8 +154,8 @@
   .modal__close {
     width: 26px;
     height: 26px;
-    top: -50px;
-    right: 9px;
+    top: -40px;
+    right: 6px;
   }
 
   .modal__container_type_preview {
@@ -162,5 +171,6 @@
     font-size: 14px;
     width: 238px;
     height: 46px;
+    margin-top: 16px;
   }
 }
