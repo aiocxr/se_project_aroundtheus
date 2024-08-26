@@ -71,7 +71,7 @@
 .popup__block {
 }
 
-.popup__label {
+.modal__label {
   display: flex;
   flex-direction: column;
   position: relative;
