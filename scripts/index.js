@@ -101,16 +101,6 @@ function getCardElement(cardData) {
   return cardElement;
 }
 
-// KEY FUNCTIONS TO OPEN AND CLOSE
-
-function openModal(modal) {
-  modal.classList.add("modal_opened");
-}
-
-function closeModal(modal) {
-  modal.classList.remove("modal_opened");
-}
-
 function renderCard(cardData, wrapper) {
   const cardElement = getCardElement(cardData);
   wrapper.prepend(cardElement);
@@ -163,19 +153,10 @@ previewModalCloseButton.addEventListener("click", () => {
   closeModal(previewModal);
 });
 
-// Form Submit Event Listeners for profile and card
+// Event Listeners for Form Submit
 
 profileEditForm.addEventListener("submit", handleProfileFormSubmit);
 addCardForm.addEventListener("submit", handleAddCardFormSubmit);
-
-// Escape & overlay Key Event Listener to close modals
-
-function closeActiveModals() {
-  const modal = document.querySelector(".modal_opened");
-  if (modal) {
-    closeModal(modal);
-  }
-}
 
 function handleEscapeKeyPress(evt) {
   if (evt.key === "Escape") {
@@ -184,10 +165,28 @@ function handleEscapeKeyPress(evt) {
 }
 
 function handleOverlayClick(evt) {
-  if (evt.target.classList.contains("modal")) {
-    closeModal(evt.target);
+  if (evt.target.classList.contains("modal_opened")) {
+    closeActiveModals();
   }
 }
 
-document.addEventListener("keydown", handleEscapeKeyPress);
-document.addEventListener("click", handleOverlayClick);
+function openModal(modal) {
+  modal.classList.add("modal_opened");
+  modal.setAttribute("tabindex", "-1");
+  modal.focus();
+  document.addEventListener("keydown", handleEscapeKeyPress);
+  modal.addEventListener("click", handleOverlayClick);
+}
+
+function closeModal(modal) {
+  modal.classList.remove("modal_opened");
+  document.removeEventListener("keydown", handleEscapeKeyPress);
+  modal.removeEventListener("click", handleOverlayClick);
+}
+
+function closeActiveModals() {
+  const modal = document.querySelector(".modal_opened");
+  if (modal) {
+    closeModal(modal);
+  }
+}
