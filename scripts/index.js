@@ -174,13 +174,13 @@ function openModal(modal) {
   modal.classList.add("modal_opened");
   modal.setAttribute("tabindex", "-1");
   modal.focus();
-  document.addEventListener("keydown", handleEscapeKeyPress);
+  modal.addEventListener("keydown", handleEscapeKeyPress);
   modal.addEventListener("click", handleOverlayClick);
 }
 
 function closeModal(modal) {
   modal.classList.remove("modal_opened");
-  document.removeEventListener("keydown", handleEscapeKeyPress);
+  modal.removeEventListener("keydown", handleEscapeKeyPress);
   modal.removeEventListener("click", handleOverlayClick);
 }
 
