@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=devicewidth, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Around the U.S.</title>
     <link href="./pages/index.css" rel="stylesheet" />
     <link rel="stylesheet" href="vendor/fonts.css" />
@@ -59,25 +59,26 @@
           type="button"
         ></button>
         <h6 class="modal__heading">Edit Profile</h6>
-        <form class="modal__form" novalidate>
-          <label class="popup__label">
+        <form name="profile-edit-form" class="modal__form" novalidate>
+          <label class="modal__label">
             <input
               class="modal__input"
               id="profile-title-input"
-              placeholder="Jacques Costeau"
+              placeholder="Name"
               type="text"
               name="title"
               required
               minlength="2"
               maxlength="40"
             />
-            <span class="popup__error" id="profile-title-input-error"></span>
+            <span class="modal__error" id="profile-title-input-error"></span>
           </label>
-          <label class="popup__label">
+
+          <label class="modal__label">
             <input
               class="modal__input"
               id="profile-description-input"
-              placeholder="Explorer"
+              placeholder="About"
               type="text"
               name="description"
               required
@@ -85,11 +86,18 @@
               maxlength="200"
             />
             <span
-              class="popup__error"
+              class="modal__error"
               id="profile-description-input-error"
             ></span>
           </label>
-          <button class="modal__button" type="submit">Save</button>
+
+          <button
+            class="modal__button modal__button_disabled"
+            type="submit"
+            disabled
+          >
+            Save
+          </button>
         </form>
       </div>
     </div>
@@ -103,11 +111,13 @@
           id="modal-add-button"
           type="button"
         ></button>
+        <!-- fix ID name^ -->
         <h6 class="modal__heading">New place</h6>
-        <form class="modal__form" id="add-card-form" novalidate>
-          <label class="popup__label">
+        <form class="modal__form" name="add-card-form" novalidate>
+          <label class="modal__label">
             <input
               class="modal__input modal__input_type_title"
+              id="addcard-title-input"
               placeholder="Title"
               name="title"
               type="text"
@@ -115,15 +125,27 @@
               maxlength="30"
               required
             />
+            <span class="modal__error" id="addcard-title-input-error"></span>
           </label>
-          <input
-            class="modal__input modal__input_type_url"
-            placeholder="Image url"
-            name="url"
-            type="url"
-            required
-          />
-          <button class="modal__button" type="submit">Save</button>
+          <label class="modal__label">
+            <input
+              class="modal__input modal__input_type_url"
+              id="addcard-url-input"
+              placeholder="Image URL"
+              name="url"
+              type="url"
+              required
+            />
+            <span class="modal__error" id="addcard-url-input-error"></span>
+          </label>
+
+          <button
+            class="modal__button modal__button_disabled"
+            type="submit"
+            disabled
+          >
+            Create
+          </button>
         </form>
       </div>
     </div>
@@ -138,11 +160,11 @@
           type="button"
         ></button>
         <img
-          class="preview__image"
+          class="modal__image"
           src="./images/card-images/lago.jpg"
           alt="Image"
         />
-        <p class="preview__title"></p>
+        <p class="modal__title"></p>
       </div>
     </div>
 
