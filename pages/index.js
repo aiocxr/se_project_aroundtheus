@@ -1,3 +1,5 @@
+import Card from "../components/card.js";
+
 const initialCards = [
   {
     name: "Yosemite Valley",
@@ -25,7 +27,12 @@ const initialCards = [
   },
 ];
 
-console.log(initialCards);
+const cardData = {
+  name: "Yosemite Valley",
+  link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/around-project/yosemite.jpg",
+};
+
+const card = new Card(cardData, "#card-template");
 
 // PROFILE ELEMENTS
 
@@ -81,7 +88,7 @@ function getCardElement(cardData) {
   const cardTitleEl = cardElement.querySelector(".cards__title");
   const likeButton = cardElement.querySelector(".cards__like-button");
   const deleteButton = cardElement.querySelector(".cards__trash-button");
-  // const previewModal = document.querySelector("#preview-modal");
+  const previewModal = document.querySelector("#preview-modal");
   const previewModalImage = previewModal.querySelector(".preview__image");
   const previewModalTitle = previewModal.querySelector(".preview__title");
   // const previewModalCloseButton = previewModal.querySelector(

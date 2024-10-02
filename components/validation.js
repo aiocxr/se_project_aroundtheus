@@ -27,24 +27,6 @@ function enableValidation(options) {
   });
 }
 
-// function toggleButtonState(inputEls, submitButton, { inactiveButtonClass }) {
-//   let foundInvalid = false;
-
-//   inputEls.forEach((inputEl) => {
-//     if (!inputEl.validity.valid) {
-//       foundInvalid = true;
-//     }
-//   });
-
-//   if (foundInvalid) {
-//     submitButton.classList.add(inactiveButtonClass);
-//     submitButton.disabled = true;
-//   } else {
-//     submitButton.classList.remove("inactiveButtonClass");
-//     submitButton.disabled = false;
-//   }
-// }
-
 function hasInvalidInput(inputList) {
   return !inputList.every((inputEl) => inputEl.validity.valid);
 }
