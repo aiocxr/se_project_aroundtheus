@@ -1,4 +1,4 @@
-import Card from "../components/card.js";
+// import Card from "../components/card.js";
 
 const initialCards = [
   {
@@ -27,12 +27,22 @@ const initialCards = [
   },
 ];
 
+console.log(initialCards);
+
+// Cards function to Render Cards from initial cards array
+
+initialCards.forEach((cardData) => {
+  const cardElement = getCardElement(cardData);
+  cardListEl.append(cardElement);
+});
+
 const cardData = {
   name: "Yosemite Valley",
   link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/around-project/yosemite.jpg",
 };
 
 const card = new Card(cardData, "#card-template");
+card.getView();
 
 // PROFILE ELEMENTS
 
@@ -51,7 +61,6 @@ const addCardModal = document.querySelector("#add-card-modal");
 const addCardForm = document.forms["add-card-form"];
 const addNewCardButton = document.querySelector(".profile__add-button");
 const closeAddModalButton = addCardModal.querySelector("#modal-add-button");
-// =
 const previewModal = document.querySelector("#preview-modal");
 const previewModalCloseButton = previewModal.querySelector(
   "#preview-modal-close-button"
@@ -71,13 +80,6 @@ const profileDescriptionInput = document.querySelector(
   "#profile-description-input"
 );
 
-// Cards function to Render Cards from initial cards array
-
-initialCards.forEach((cardData) => {
-  const cardElement = getCardElement(cardData);
-  cardListEl.append(cardElement);
-});
-
 // Card Element Function to create card element from card data object and return card element to render card
 
 function getCardElement(cardData) {
@@ -89,9 +91,7 @@ function getCardElement(cardData) {
   const previewModal = document.querySelector("#preview-modal");
   const previewModalImage = previewModal.querySelector(".preview__image");
   const previewModalTitle = previewModal.querySelector(".preview__title");
-  // const previewModalCloseButton = previewModal.querySelector(
-  //   "#preview-modal-close-button"
-  // );
+
   likeButton.addEventListener("click", () => {
     likeButton.classList.toggle("cards__like-button_active");
   });
