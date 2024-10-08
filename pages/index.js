@@ -1,4 +1,4 @@
-// import Card from "../components/card.js";
+import Card from "../components/card.js";
 
 const initialCards = [
   {
