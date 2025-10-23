@@ -39,24 +39,6 @@
   font-size: 14px;
 }
 
-/* .modal__button {
-  width: auto;
-  height: 50px;
-  font-family: "Inter", Arial, Helvetica, sans-serif;
-  font-weight: 400;
-  font-size: 18px;
-  background-color: rgba(0, 0, 0, 1);
-  color: #fff;
-  border: none;
-  cursor: pointer;
-  border-radius: 2px;
-  border: 1px;
-}
-
-.modal__button:hover {
-  background-color: rgba(0, 0, 0, 0.8);
-} */
-
 .modal__button_disabled {
   opacity: 20%;
   background-color: white;
@@ -66,9 +48,6 @@
 
 .modal__button_disabled:hover {
   background-color: white;
-}
-
-.popup__block {
 }
 
 .modal__label {
