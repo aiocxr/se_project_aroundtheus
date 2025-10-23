@@ -8,7 +8,7 @@
 
 **Intro**
 
-- (https://angel-gaytan.github.io/se_project_aroundtheus/)
+- (https://aiocxr.github.io/se_project_aroundtheus/)
 
 This project is made so all the elements are displayed correctly on popular screen sizes.
 **Figma**
