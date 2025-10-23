@@ -5,7 +5,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Around the U.S.</title>
-    <link href="./pages/index.css" rel="stylesheet" />
+    <link rel="icon" href="/favicon.ico" type="image/x-icon" />
+    <!-- <link href="./pages/index.css" rel="stylesheet" /> -->
     <link rel="stylesheet" href="vendor/fonts.css" />
   </head>
   <body class="page">
@@ -13,7 +14,7 @@
       <header class="header page__section">
         <img
           class="header__logo"
-          src="./images/logo.svg"
+          src="<%= require('./images/logo.svg') %>"
           alt="Around the U.S. logo"
         />
       </header>
@@ -21,7 +22,7 @@
         <section class="profile page__section">
           <img
             class="profile__image"
-            src="./images/jacques-cousteau.jpg"
+            src="<%= require('./images/jacques-cousteau.jpg')%>"
             alt="Avatar"
           />
           <div class="profile__info">
@@ -79,8 +80,8 @@
               class="modal__input"
               id="profile-description-input"
               placeholder="About"
-              type="text"
               name="description"
+              type="text"
               required
               minlength="2"
               maxlength="200"
@@ -108,10 +109,9 @@
       <div class="modal__container">
         <button
           class="modal__close"
-          id="modal-add-button"
+          id="add-modal-close-button"
           type="button"
         ></button>
-        <!-- fix ID name^ -->
         <h6 class="modal__heading">New place</h6>
         <form class="modal__form" name="add-card-form" novalidate>
           <label class="modal__label">
@@ -159,16 +159,15 @@
           id="preview-modal-close-button"
           type="button"
         ></button>
-        <img
-          class="modal__image"
-          src="./images/card-images/lago.jpg"
-          alt="Image"
-        />
-        <p class="modal__title"></p>
+        <img class="preview__modal-image" src="" alt="" />
+        <p class="preview__modal-title"></p>
       </div>
     </div>
 
-    <!-- CARD TEMPLATE -->
+    <!-- <script defer src="./scripts/index.js" type="module"></script> -->
+    <!-- <script defer src="./scripts/validation.js" type="module"></script> -->
+    <!-- <script defer src="./components/Card.js" type="module"></script> -->
+    <!-- <script defer src="./components/FormValidator.js" type="module"></script> -->
 
     <template id="card-template">
       <li class="cards">
@@ -180,12 +179,5 @@
         </div>
       </li>
     </template>
-
-    <!-- SCRIPTS -->
-
-    <script defer type="module" src="./pages/index.js"></script>
-    <script defer type="module" src="./components/card.js"></script>
-    <script defer type="module" src="./pages/validation.js"></script>
-    <script type="module" src="./components/validate.js"></script>
   </body>
 </html>
