@@ -85,7 +85,7 @@ const profilePopupForm = new PopupWithForm(
       name: formData.title,
       job: formData.description,
     });
-
+    profilePopupForm.resetForm();
     profilePopupForm.close();
   }
 );
@@ -93,6 +93,7 @@ const profilePopupForm = new PopupWithForm(
 const newCardPopup = new PopupWithForm("#add-card-modal", (formData) => {
   const newCard = createCard({ name: formData.title, link: formData.url });
   cardSection.addItem(newCard);
+  newCardPopup.resetForm();
   newCardPopup.close();
 });
 
@@ -127,7 +128,6 @@ closeProfileModalButton.addEventListener("click", () =>
 
 // Add Card
 addNewCardButton.addEventListener("click", () => {
-  addCardForm.reset();
   addCardFormValidator.disableSubmitButton();
   newCardPopup.open();
 });

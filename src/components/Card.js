@@ -7,27 +7,17 @@ export default class Card {
   }
 
   _setEventListeners() {
-    this._cardElement
-      .querySelector(".cards__like-button")
-      .addEventListener("click", () =>
-        this._handleLikeButton(this._cardElement)
-      );
-    this._cardElement
-      .querySelector(".cards__trash-button")
-      .addEventListener("click", () =>
-        this._handleDeleteButton(this._cardElement)
-      );
-    this._cardElement
-      .querySelector(".cards__image")
-      .addEventListener("click", () => {
-        this._handleImageClick({ name: this._name, link: this._link });
-      });
+    this._likeButton.addEventListener("click", () => this._handleLikeButton());
+    this._trashButton.addEventListener("click", () =>
+      this._handleDeleteButton()
+    );
+    this._imageElement.addEventListener("click", () => {
+      this._handleImageClick({ name: this._name, link: this._link });
+    });
   }
 
   _handleLikeButton() {
-    this._cardElement
-      .querySelector(".cards__like-button")
-      .classList.toggle("cards__like-button_active");
+    this._likeButton.classList.toggle("cards__like-button_active");
   }
 
   _handleDeleteButton() {
@@ -41,14 +31,17 @@ export default class Card {
       .content.querySelector(".cards")
       .cloneNode(true);
 
+    // Cache DOM elements
+    this._likeButton = this._cardElement.querySelector(".cards__like-button");
+    this._trashButton = this._cardElement.querySelector(".cards__trash-button");
+    this._imageElement = this._cardElement.querySelector(".cards__image");
+    this._titleElement = this._cardElement.querySelector(".cards__title");
+
     this._setEventListeners();
 
-    const cardImageEl = this._cardElement.querySelector(".cards__image");
-    const cardTitleEl = this._cardElement.querySelector(".cards__title");
-
-    cardImageEl.src = this._link;
-    cardTitleEl.textContent = this._name;
-    cardImageEl.alt = "Photo of " + this._name;
+    this._imageElement.src = this._link;
+    this._imageElement.alt = `Photo of ${this._name}`;
+    this._titleElement.textContent = this._name;
 
     return this._cardElement;
   }
