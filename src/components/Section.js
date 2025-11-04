@@ -2,17 +2,22 @@ export default class Section {
   constructor({ items, renderer }, cardListEl) {
     this._items = items;
     this._renderer = renderer;
-    this._cardlistel = cardListEl;
+    this._cardListEl = cardListEl;
+  }
+
+  renderCard(cardData) {
+    const cardElement = this._renderer(cardData);
+    this.addItem(cardElement);
   }
 
   renderItems() {
     // renders items to the page
     this._items.forEach((item) => {
-      this._renderer(item);
+      this.renderCard(item);
     });
   }
 
   addItem(item) {
-    this._cardlistel.prepend(item);
+    this._cardListEl.prepend(item);
   }
 }

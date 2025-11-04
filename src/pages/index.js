@@ -59,8 +59,7 @@ const cardSection = new Section(
   {
     items: initialCards,
     renderer: (cardData) => {
-      const cardElement = createCard(cardData);
-      cardSection.addItem(cardElement);
+      return createCard(cardData);
     },
   },
   cardListEl
@@ -78,23 +77,23 @@ const previewPopup = new PopupWithImage("#preview-modal");
 const profilePopupForm = new PopupWithForm(
   "#profile-edit-modal",
   (formData) => {
-    profileTitle.textContent = formData.title;
-    profileDescription.textContent = formData.description;
-
     userInfo.setUserInfo({
       name: formData.title,
       job: formData.description,
     });
-    profilePopupForm.resetForm();
     profilePopupForm.close();
+    profilePopupForm.resetForm();
   }
 );
 
 const newCardPopup = new PopupWithForm("#add-card-modal", (formData) => {
-  const newCard = createCard({ name: formData.title, link: formData.url });
-  cardSection.addItem(newCard);
-  newCardPopup.resetForm();
+  cardSection.renderCard({
+    name: formData.title,
+    link: formData.link,
+  });
   newCardPopup.close();
+  newCardPopup.resetForm();
+  addCardFormValidator.resetValidation();
 });
 
 // Validators
@@ -117,18 +116,15 @@ editProfileFormValidator.enableValidation();
 // --------------------
 // Profile Edit
 profileEditButton.addEventListener("click", () => {
-  profileTitleInput.value = profileTitle.textContent;
-  profileDescriptionInput.value = profileDescription.textContent;
+  const { job, name } = userInfo.getUserInfo();
+  profileTitleInput.value = name;
+  profileDescriptionInput.value = job;
   editProfileFormValidator.resetValidation();
   profilePopupForm.open();
 });
-closeProfileModalButton.addEventListener("click", () =>
-  profilePopupForm.close()
-);
 
 // Add Card
 addNewCardButton.addEventListener("click", () => {
-  addCardFormValidator.disableSubmitButton();
   newCardPopup.open();
 });
 closeAddModalButton.addEventListener("click", () => newCardPopup.close());
