@@ -2,6 +2,7 @@
 // Imports
 // --------------------
 import "../vendor/fonts.css";
+import "../pages/index.css";
 import { config, initialCards } from "../utils/utils.js";
 import Card from "../components/Card.js";
 import FormValidator from "../components/FormValidator.js";
@@ -10,34 +11,18 @@ import PopupWithImage from "../components/PopupWithImage.js";
 import PopupWithForm from "../components/PopupWithForm.js";
 import UserInfo from "../components/UserInfo.js";
 import api from "../components/Api.js";
-import "../pages/index.css";
 
 // --------------------
 // DOM Elements
 // --------------------
-// Profile
 const profileEditButton = document.querySelector("#profile-edit-button");
-const profileEditModal = document.querySelector("#profile-edit-modal");
-const closeProfileModalButton = profileEditModal.querySelector(
-  "#profile-modal-close-button"
-);
 const profileEditForm = document.forms["profile-edit-form"];
-const profileTitle = document.querySelector(".profile__title");
-const profileDescription = document.querySelector(".profile__description");
 const profileTitleInput = document.querySelector("#profile-title-input");
 const profileDescriptionInput = document.querySelector(
   "#profile-description-input"
 );
-
-// Add Card
-const addCardModal = document.querySelector("#add-card-modal");
 const addCardForm = document.forms["add-card-form"];
-const closeAddModalButton = addCardModal.querySelector(
-  "#add-modal-close-button"
-);
 const addNewCardButton = document.querySelector(".profile__add-button");
-
-// Cards List
 const cardListEl = document.querySelector(".cards__list");
 
 // --------------------
@@ -88,13 +73,15 @@ const profilePopupForm = new PopupWithForm(
 );
 
 const newCardPopup = new PopupWithForm("#add-card-modal", (formData) => {
-  cardSection.renderCard({
-    name: formData.title,
-    link: formData.link,
-  });
-  newCardPopup.close();
-  newCardPopup.resetForm();
-  addCardFormValidator.resetValidation();
+  api
+    .addCard({ name: formData.title, link: formData.link })
+    .then((cardData) => {
+      cardSection.renderCard(cardData);
+      newCardPopup.close();
+      newCardPopup.resetForm();
+      addCardFormValidator.resetValidation();
+    })
+    .catch((err) => console.error(err));
 });
 
 // Validators
@@ -108,14 +95,22 @@ cardSection.renderItems();
 previewPopup.setEventListeners();
 profilePopupForm.setEventListeners();
 newCardPopup.setEventListeners();
-
 addCardFormValidator.enableValidation();
 editProfileFormValidator.enableValidation();
+
+api
+  .getInitialCards()
+  .then((cards) => {
+    console.log(cards);
+    cards.forEach((cardData) => {
+      cardSection.renderCard(cardData);
+    });
+  })
+  .catch((err) => console.error(err));
 
 // --------------------
 // Event Listeners
 // --------------------
-// Profile Edit
 profileEditButton.addEventListener("click", () => {
   const { job, name } = userInfo.getUserInfo();
   profileTitleInput.value = name;
@@ -124,8 +119,6 @@ profileEditButton.addEventListener("click", () => {
   profilePopupForm.open();
 });
 
-// Add Card
 addNewCardButton.addEventListener("click", () => {
   newCardPopup.open();
 });
-closeAddModalButton.addEventListener("click", () => newCardPopup.close());

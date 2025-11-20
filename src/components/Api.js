@@ -1,13 +1,36 @@
 class Api {
   constructor(options) {
-    // constructor body
+    this._baseUrl = options.baseUrl;
+    this._headers = options.headers;
   }
 
   getInitialCards() {
-    // ...
+    return fetch(`${this._baseUrl}/cards`, {
+      headers: this._headers,
+    })
+      .then((res) => {
+        if (res.ok) {
+          return res.json();
+        }
+        return Promise.reject(`Error: ${res.status}`);
+      })
+      .catch((err) => console.log(err));
   }
 
-  // other methods for working with the API
+  addCard(cardData) {
+    return fetch(`${this._baseUrl}/cards`, {
+      method: "POST",
+      headers: this._headers,
+      body: JSON.stringify(cardData),
+    })
+      .then((res) => {
+        if (res.ok) {
+          return res.json();
+        }
+        return Promise.reject(`Error: ${res.status}`);
+      })
+      .catch((err) => console.log(err));
+  }
 }
 
 const api = new Api({
@@ -19,4 +42,3 @@ const api = new Api({
 });
 
 export default api;
-
