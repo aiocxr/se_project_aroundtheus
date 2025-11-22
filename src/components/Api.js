@@ -4,17 +4,17 @@ class Api {
     this._headers = options.headers;
   }
 
+  _handleResponse(res) {
+    if (res.ok) {
+      return res.json();
+    }
+    return Promise.reject(`Error: ${res.status}`);
+  }
+
   getInitialCards() {
     return fetch(`${this._baseUrl}/cards`, {
       headers: this._headers,
-    })
-      .then((res) => {
-        if (res.ok) {
-          return res.json();
-        }
-        return Promise.reject(`Error: ${res.status}`);
-      })
-      .catch((err) => console.log(err));
+    }).then(this._handleResponse);
   }
 
   addCard(cardData) {
@@ -22,14 +22,28 @@ class Api {
       method: "POST",
       headers: this._headers,
       body: JSON.stringify(cardData),
-    })
-      .then((res) => {
-        if (res.ok) {
-          return res.json();
-        }
-        return Promise.reject(`Error: ${res.status}`);
-      })
-      .catch((err) => console.log(err));
+    }).then(this._handleResponse);
+  }
+
+  deleteCard(cardId) {
+    return fetch(`${this._baseUrl}/cards/${cardId}`, {
+      method: "DELETE",
+      headers: this._headers,
+    }).then(this._handleResponse);
+  }
+
+  getUserInfo() {
+    return fetch(`${this._baseUrl}/users/me`, {
+      headers: this._headers,
+    }).then(this._handleResponse);
+  }
+
+  updateUserInfo(userData) {
+    return fetch(`${this._baseUrl}/users/me`, {
+      method: "PATCH",
+      headers: this._headers,
+      body: JSON.stringify(userData),
+    }).then(this._handleResponse);
   }
 }
 

@@ -57,6 +57,25 @@
   padding: 0;
 }
 
+.modal__container_type_confirmation {
+  width: 430px;
+  height: 181px;
+  padding: 34px 36px 36px;
+}
+
+.confirmation__modal-message {
+  width: 358px;
+  height: 23px;
+  font-family: "Inter", Arial, Helvetica, sans-serif;
+  font-weight: 900;
+  font-size: 24px;
+  margin: 0 0 38px 0;
+}
+
+.modal__button_type_confirmation {
+  width: 358px;
+  height: 50px;
+}
 .preview__modal-image {
   max-width: 75vw;
   max-height: 75vh;
