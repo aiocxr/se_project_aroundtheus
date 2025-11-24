@@ -18,11 +18,17 @@
       </header>
       <main class="content">
         <section class="profile page__section">
-          <img
-            class="profile__image"
-            src="<%= require('./images/jacques-cousteau.jpg')%>"
-            alt="Avatar"
-          />
+          <button
+            class="profile__image-button"
+            type="button"
+            aria-label="Change profile picture"
+          >
+            <img
+              class="profile__image"
+              src="<%= require('./images/jacques-cousteau.jpg')%>"
+              alt="Avatar"
+            />
+          </button>
           <div class="profile__info">
             <h1 class="profile__title">Jacques Cousteau</h1>
             <button
@@ -35,7 +41,7 @@
           <button
             type="button"
             class="profile__add-button"
-            id="profile-edit-button"
+            id="profile-add-button"
           ></button>
         </section>
 
@@ -127,7 +133,7 @@
           </label>
           <label class="modal__label">
             <input
-              class="modal__input modal__input_type_url"
+              class="modal__input"
               id="addcard-url-input"
               placeholder="Image URL"
               name="link"
@@ -159,6 +165,60 @@
         ></button>
         <img class="preview__modal-image" src="" alt="" />
         <p class="preview__modal-title"></p>
+      </div>
+    </div>
+
+    <!-- CONFIRMATION MODAL -->
+
+    <div class="modal" id="confirmation-modal">
+      <div class="modal__container modal__container_type_confirmation">
+        <button
+          class="modal__close modal__close_type_confirmation"
+          id="confirmation-modal-close-button"
+          type="button"
+        ></button>
+        <p class="confirmation__modal-message">Are you sure?</p>
+        <button
+          class="modal__button modal__button_type_confirmation"
+          id="confirmation-yes-button"
+        >
+          Yes
+        </button>
+      </div>
+    </div>
+
+    <!-- AVATAR UPLOAD MODAL -->
+
+    <div class="modal" id="avatar-upload-modal">
+      <div class="modal__container modal__container_type_avatar">
+        <button
+          class="modal__close modal__close_type_avatar"
+          id="avatar-upload-modal-close-button"
+          type="button"
+        ></button>
+        <p class="avatar__modal-title">Change profile picture</p>
+        <form class="modal__form" name="avatar-upload-form" novalidate>
+          <label class="modal__label">
+            <input
+              class="modal__input"
+              id="avatar-url-input"
+              placeholder="Avatar URL"
+              name="avatarLink"
+              type="url"
+              required
+            />
+            <span class="modal__error" id="avatar-url-input-error"></span>
+          </label>
+
+          <button
+            class="modal__button modal__button_disabled"
+            id="avatar-save-button"
+            type="submit"
+            disabled
+          >
+            Save
+          </button>
+        </form>
       </div>
     </div>
 

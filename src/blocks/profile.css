@@ -1,18 +1,58 @@
+/* Main container */
 .profile {
   display: flex;
   align-items: center;
 }
 
+/* Profile image button and image */
+.profile__image-button {
+  border: none;
+  border-radius: 50%;
+  position: relative;
+  padding: 0;
+  cursor: pointer;
+  margin: 0 30px 0 0;
+  width: 120px;
+  height: 120px;
+  background: transparent;
+}
+
+.profile__image {
+  display: block;
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  object-fit: cover;
+  transition: opacity 0.3s;
+}
+
+.profile__image-button::before {
+  content: "";
+  position: absolute;
+  top: -1px;
+  left: -1px;
+  right: -1px;
+  bottom: -1px;
+  background-color: rgba(0, 0, 0, 0.8);
+  background-image: url(../images/edit-pencil.svg);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 26px 26px;
+  border-radius: 50%;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.profile__image-button:hover::before {
+  opacity: 1;
+}
+
+/* Profile info section */
 .profile__info {
   display: grid;
   grid-template-areas: "title button" "description button";
   align-items: center;
   line-height: 16px;
-}
-
-.profile__image {
-  border-radius: 50%;
-  margin-right: 30px;
 }
 
 .profile__title {
@@ -41,6 +81,7 @@
   max-width: 260px;
 }
 
+/* Edit button */
 .profile__edit-button {
   background: transparent url(../images/edit-button.svg) center no-repeat;
   width: 24px;
@@ -54,6 +95,7 @@
   cursor: pointer;
 }
 
+/* Add button */
 .profile__add-button {
   background: transparent url(../images/add-button.svg) center no-repeat;
   width: 150px;
@@ -69,6 +111,7 @@
   cursor: pointer;
 }
 
+/* Media queries */
 @media screen and (max-width: 770px) {
   .profile__title {
     font-size: 22px;
@@ -116,7 +159,7 @@
     height: 50px;
   }
 
-  .profile__image {
+  .profile__image-button {
     margin: 0;
   }
 }
