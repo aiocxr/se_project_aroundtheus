@@ -2,6 +2,7 @@ class Api {
   constructor(options) {
     this._baseUrl = options.baseUrl;
     this._headers = options.headers;
+    this._handleResponse = this._handleResponse.bind(this);
   }
 
   _handleResponse(res) {
@@ -43,6 +44,28 @@ class Api {
       method: "PATCH",
       headers: this._headers,
       body: JSON.stringify(userData),
+    }).then(this._handleResponse);
+  }
+
+  likeCard(cardId) {
+    return fetch(`${this._baseUrl}/cards/${cardId}/likes`, {
+      method: "PUT",
+      headers: this._headers,
+    }).then(this._handleResponse);
+  }
+
+  unlikeCard(cardId) {
+    return fetch(`${this._baseUrl}/cards/${cardId}/likes`, {
+      method: "DELETE",
+      headers: this._headers,
+    }).then(this._handleResponse);
+  }
+
+  updateAvatar(avatarData) {
+    return fetch(`${this._baseUrl}/users/me/avatar`, {
+      method: "PATCH",
+      headers: this._headers,
+      body: JSON.stringify(avatarData),
     }).then(this._handleResponse);
   }
 }

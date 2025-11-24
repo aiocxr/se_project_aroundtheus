@@ -63,6 +63,24 @@
   padding: 34px 36px 36px;
 }
 
+.modal__container_type_avatar {
+  height: 272px;
+  padding: 34px 36px 36px;
+}
+
+.modal__container_type_avatar .modal__label {
+  margin: 0 0 18px 0;
+}
+
+.avatar__modal-title {
+  width: 330px;
+  height: 23px;
+  font-size: 24px;
+  font-family: "Inter", Arial, Helvetica, sans-serif;
+  font-weight: 900;
+  margin: 0 0 54px 0;
+}
+
 .confirmation__modal-message {
   width: 358px;
   height: 23px;

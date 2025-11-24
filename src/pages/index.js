@@ -22,8 +22,10 @@ const profileTitleInput = document.querySelector("#profile-title-input");
 const profileDescriptionInput = document.querySelector(
   "#profile-description-input"
 );
+const profileImageButton = document.querySelector(".profile__image-button");
 const addCardForm = document.forms["add-card-form"];
-const addNewCardButton = document.querySelector(".profile__add-button");
+const avatarForm = document.forms["avatar-upload-form"];
+const addNewCardButton = document.querySelector("#profile-add-button");
 const cardListEl = document.querySelector(".cards__list");
 const confirmationYesButton = document.querySelector(
   "#confirmation-yes-button"
@@ -47,11 +49,14 @@ const handleDeleteClick = (cardId, cardElement) => {
 };
 
 function createCard(cardData) {
+  console.log(cardData);
+
   const card = new Card(
     cardData,
     "#card-template",
     handleImageClick,
-    handleDeleteClick
+    handleDeleteClick,
+    api
   );
   return card.getView();
 }
@@ -74,6 +79,7 @@ const cardSection = new Section(
 const userInfo = new UserInfo({
   nameSelector: ".profile__title",
   jobSelector: ".profile__description",
+  avatarSelector: ".profile__image",
 });
 
 // Popups
@@ -82,6 +88,7 @@ const previewPopup = new PopupWithImage("#preview-modal");
 const profilePopupForm = new PopupWithForm(
   "#profile-edit-modal",
   (formData) => {
+    profilePopupForm.renderLoading(true);
     api
       .updateUserInfo({
         name: formData.title,
@@ -95,11 +102,15 @@ const profilePopupForm = new PopupWithForm(
         profilePopupForm.close();
         profilePopupForm.resetForm();
       })
-      .catch((err) => console.error(err));
+      .catch((err) => console.error(err))
+      .finally(() => {
+        profilePopupForm.renderLoading(false);
+      });
   }
 );
 
 const newCardPopup = new PopupWithForm("#add-card-modal", (formData) => {
+  newCardPopup.renderLoading(true, "Creating...");
   api
     .addCard({ name: formData.title, link: formData.link })
     .then((cardData) => {
@@ -108,12 +119,33 @@ const newCardPopup = new PopupWithForm("#add-card-modal", (formData) => {
       newCardPopup.resetForm();
       addCardFormValidator.resetValidation();
     })
-    .catch((err) => console.error(err));
+    .catch((err) => console.error(err))
+    .finally(() => {
+      newCardPopup.renderLoading(false);
+    });
+});
+
+const avatarPopup = new PopupWithForm("#avatar-upload-modal", (formData) => {
+  avatarPopup.renderLoading(true);
+  api
+    .updateAvatar({ avatar: formData.avatarLink })
+    .then((userData) => {
+      userInfo.setUserInfo({
+        avatar: userData.avatar,
+      });
+      avatarPopup.close();
+      avatarPopup.resetForm();
+    })
+    .catch((err) => console.error(err))
+    .finally(() => {
+      avatarPopup.renderLoading(false);
+    });
 });
 
 // Validators
 const addCardFormValidator = new FormValidator(config, addCardForm);
 const editProfileFormValidator = new FormValidator(config, profileEditForm);
+const avatarFormValidator = new FormValidator(config, avatarForm);
 
 // --------------------
 // Initialization
@@ -121,9 +153,11 @@ const editProfileFormValidator = new FormValidator(config, profileEditForm);
 previewPopup.setEventListeners();
 profilePopupForm.setEventListeners();
 newCardPopup.setEventListeners();
+avatarPopup.setEventListeners();
 confirmationPopup.setEventListeners();
 addCardFormValidator.enableValidation();
 editProfileFormValidator.enableValidation();
+avatarFormValidator.enableValidation();
 
 // Load user info from API
 api
@@ -132,6 +166,7 @@ api
     userInfo.setUserInfo({
       name: userData.name,
       job: userData.about,
+      avatar: userData.avatar,
     });
   })
   .catch((err) => console.error(err));
@@ -161,8 +196,15 @@ addNewCardButton.addEventListener("click", () => {
   newCardPopup.open();
 });
 
+profileImageButton.addEventListener("click", () => {
+  avatarFormValidator.resetValidation();
+  avatarPopup.open();
+});
+
 confirmationYesButton.addEventListener("click", () => {
   if (cardToDelete) {
+    const originalButtonText = confirmationYesButton.textContent;
+    confirmationYesButton.textContent = "Deleting...";
     api
       .deleteCard(cardToDelete.id)
       .then(() => {
@@ -170,6 +212,9 @@ confirmationYesButton.addEventListener("click", () => {
         cardToDelete = null;
         confirmationPopup.close();
       })
-      .catch((err) => console.error(err));
+      .catch((err) => console.error(err))
+      .finally(() => {
+        confirmationYesButton.textContent = originalButtonText;
+      });
   }
 });
