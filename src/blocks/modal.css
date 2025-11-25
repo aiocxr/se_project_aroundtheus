@@ -181,6 +181,10 @@
   .modal__error_visible {
     font-size: 11px;
   }
+
+  .avatar__modal-title {
+    font-size: 18px;
+  }
 }
 
 @media screen and (max-width: 320px) {

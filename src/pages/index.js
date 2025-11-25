@@ -16,6 +16,7 @@ import api from "../components/Api.js";
 // --------------------
 // DOM Elements
 // --------------------
+const profileSection = document.querySelector(".profile");
 const profileEditButton = document.querySelector("#profile-edit-button");
 const profileEditForm = document.forms["profile-edit-form"];
 const profileTitleInput = document.querySelector("#profile-title-input");
@@ -168,6 +169,7 @@ api
       job: userData.about,
       avatar: userData.avatar,
     });
+    profileSection.classList.remove("profile_hidden");
   })
   .catch((err) => console.error(err));
 

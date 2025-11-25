@@ -3,10 +3,11 @@
   "version": "0.1.0",
   "description": "A picture sharing site.",
   "main": "index.js",
-  "scripts": {
-    "build": "webpack --mode production",
-    "dev": "webpack serve --mode development"
-  },
+ "scripts": {
+  "dev": "webpack serve --config webpack.config.js",
+  "build": "webpack --config webpack.config.prod.js",
+  "deploy": "npm run build && gh-pages -d dist"
+},
   "keywords": [],
   "author": "Elise Bouer",
   "license": "ISC",
