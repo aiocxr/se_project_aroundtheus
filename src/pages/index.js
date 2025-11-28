@@ -50,8 +50,6 @@ const handleDeleteClick = (cardId, cardElement) => {
 };
 
 function createCard(cardData) {
-  console.log(cardData);
-
   const card = new Card(
     cardData,
     "#card-template",

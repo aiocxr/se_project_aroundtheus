@@ -1,23 +1,19 @@
 export default class Card {
   constructor(
-    { link, name, _id, _isLiked },
+    { link, name, _id, isLiked },
     cardSelector,
     handleImageClick,
     handleDeleteClick,
     api
   ) {
-    console.log(_id);
-
     this._link = link;
     this._name = name;
     this._cardId = _id;
-    this._isLiked = _isLiked;
+    this._isLiked = isLiked;
     this._cardSelector = cardSelector;
     this._handleImageClick = handleImageClick;
     this._handleDeleteClick = handleDeleteClick;
     this._api = api;
-
-    console.log(this._cardId);
   }
 
   _setEventListeners() {
@@ -31,8 +27,6 @@ export default class Card {
   }
 
   _handleLikeButton() {
-    console.log(this._cardId);
-
     if (this._isLiked) {
       this._api
         .unlikeCard(this._cardId)

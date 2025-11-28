@@ -10,10 +10,6 @@ export default class PopupWithForm extends Popup {
     this._submitButtonText = this._submitButton.textContent;
   }
 
-  close() {
-    super.close();
-  }
-
   _getInputValues() {
     // gets data from all input fields
     // returns as object
