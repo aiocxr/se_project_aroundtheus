@@ -883,6 +883,22 @@ template {
   .avatar__modal-title {
     font-size: 18px;
   }
+
+  .modal__container_type_confirmation {
+    width: 282px;
+    height: 165px;
+  }
+
+  .confirmation__modal-message {
+    font-size: 18px;
+    width: 238px;
+    height: 22px;
+  }
+
+  .modal__button_type_confirmation {
+    width: 238px;
+    height: 36px;
+  }
 }
 
 @media screen and (max-width: 320px) {
